@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Unidad">
+        <item>UNIDAD</item>
+        <item>Unidad</item>
+        <item>Gramo</item>
+        <item>Kilogramo</item>
+        <item>Litro</item>
+        <item>Metro</item>
+        <item>Metro cubico</item>
+        <item>Pieza</item>
+    </string-array>
+
+    <string-array name="Categoria">
+        <item>CATEGORIA</item>
+        <item>Lacteos</item>
+        <item>Granos</item>
+        <item>Bebidas</item>
+        <item>Aseo Personal</item>
+        <item>Aseo</item>
+        <item>Electrodomestico</item>
+    </string-array>
+</resources>
