@@ -2,22 +2,20 @@ package com.ttg.inventory.ui.dashboard;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.ImageView;
 
-import com.ttg.inventory.Bodega;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 import com.ttg.inventory.ConfiguracionInicial;
-import com.ttg.inventory.Gastos;
-import com.ttg.inventory.ListaProductos;
+import com.ttg.inventory.MainActivityBodega;
+import com.ttg.inventory.MainActivityGasto;
 import com.ttg.inventory.R;
 import com.ttg.inventory.Ventas;
-import com.ttg.inventory.ui.bodega.BodegaActivity;
 import com.ttg.inventory.ui.informes.InformesActivity;
-import com.ttg.inventory.ui.producto.ProductoActivity;
 import com.ttg.inventory.ui.user.UserActivity;
+
 
 
 public class DashboardActivity extends AppCompatActivity {
@@ -43,21 +41,21 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentBog;
-                intentBog = new Intent(DashboardActivity.this, Bodega.class);
+                intentBog = new Intent(DashboardActivity.this, MainActivityBodega.class);
                 DashboardActivity.this.startActivity(intentBog);
             }
         });
 
-        cardProducto = findViewById(R.id.inventario);
+       /* cardProducto = findViewById(R.id.inventario);
 
         cardProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentPro;
-                intentPro = new Intent(DashboardActivity.this, ProductoActivity.class);
+                intentPro = new Intent(DashboardActivity.this, City.class);
                 DashboardActivity.this.startActivity(intentPro);
             }
-        });
+        });*/
 
         cardVenta = findViewById(R.id.ventas);
 
@@ -76,7 +74,7 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentPro;
-                intentPro = new Intent(DashboardActivity.this, Gastos.class);
+                intentPro = new Intent(DashboardActivity.this, MainActivityGasto.class);
                 DashboardActivity.this.startActivity(intentPro);
             }
         });

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/cvCity">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/material_gray_300">
+
+        <TextView
+            android:id="@+id/tvcode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/row_recycle_Codigo"
+            android:textAppearance="@style/FirebaseUI.Text.T05"/>
+
+        <TextView
+            android:id="@+id/tvname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/row_recycle_Ciudad"
+            android:textAppearance="@style/FirebaseUI.Text.T04"
+            />
+
+        <TextView
+            android:id="@+id/tvcountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/row_recycle_Country"
+            android:textAppearance="@style/FirebaseUI.Text.T06"/>
+
+        <TextView
+            android:id="@+id/tvstate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/row_recycle_State"
+            android:textAppearance="@style/FirebaseUI.Text.T06"/>
+
+        <TextView
+            android:id="@+id/tvpopulation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/row_recycle_Population"
+            android:textAppearance="@style/FirebaseUI.Text.T06"/>
+
+        <TextView
+            android:id="@+id/tvcapital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/row_recycle_Capital"
+            android:textAppearance="@style/FirebaseUI.Text.T06"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivEdit"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/ic_edit_18dp" />
+
+            <ImageView
+                android:id="@+id/ivDelete"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/ic_del"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/ic_add"
+                tools:ignore="VectorDrawableCompat" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

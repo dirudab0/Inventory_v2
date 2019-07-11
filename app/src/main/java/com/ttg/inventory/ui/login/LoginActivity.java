@@ -4,7 +4,6 @@ package com.ttg.inventory.ui.login;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,10 +11,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.firebase.auth.FirebaseAuth;
 import com.ttg.inventory.R;
 import com.ttg.inventory.data.controller.MySingleton;
 import com.ttg.inventory.data.controller.SessionHandler;
@@ -27,12 +29,14 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
     private static final String KEY_STATUS = "status";
     private static final String KEY_MESSAGE = "message";
     private static final String KEY_FULL_NAME = "fullName";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASSWORD = "password";
     private static final String KEY_EMPTY = "";
+
     private EditText txtLGuserName;
     private EditText txtLGpassword;
     private String username;
@@ -47,6 +51,10 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         session = new SessionHandler(getApplicationContext());
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+
 
         if(session.isLoggedIn()){
 

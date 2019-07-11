@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -28,7 +28,7 @@
 
                 <TextView
                     android:id="@+id/textTitle"
-                    android:text="INF. INICIAL"
+                    android:text="@string/inf_inicial"
                     android:textSize="34sp"
                     android:textColor="@android:color/white"
                     android:layout_centerInParent="true"
@@ -52,7 +52,7 @@
                 <EditText
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
-                    android:id="@+id/editCodigo"
+                    android:id="@+id/editNombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
@@ -63,7 +63,7 @@
             <EditText
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
-                android:hint="Nombre del Contacto"
+                android:hint="@string/nombre_del_contacto"
                 android:inputType="textPersonName"
                 android:id="@+id/editContacto"
                 android:layout_width="match_parent"
@@ -73,7 +73,7 @@
             <EditText
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"
-                        android:id="@+id/editCantidadReserva"
+                        android:id="@+id/editCorreo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
@@ -85,7 +85,7 @@
             <EditText
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
-                        android:id="@+id/editPrecioVenta"
+                        android:id="@+id/editTelefono"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Telefono"
@@ -96,7 +96,7 @@
             <EditText
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
-                android:id="@+id/editObservacion"
+                android:id="@+id/editAdicional"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="12dp"
@@ -104,19 +104,20 @@
                 android:gravity="start|top"
                 android:hint="Informacion Adicional"
                 android:inputType="textMultiLine"
-                app:layout_constraintStart_toStartOf="@+id/editPecioCompra"
-                app:layout_constraintTop_toBottomOf="@+id/editPrecioVenta" />
+                app:layout_constraintStart_toStartOf="@+id/editPCompra"
+                app:layout_constraintTop_toBottomOf="@+id/editTelefono" />
 
 
-            <android.support.design.widget.FloatingActionButton
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabAddicionar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="15dp"
+                android:onClick="saveIInicial"
                 android:src="@drawable/add_black_18dp"
                 app:backgroundTint="#009B8686" />
         </LinearLayout>
 
     </ScrollView>
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

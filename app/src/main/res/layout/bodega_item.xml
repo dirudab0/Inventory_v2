@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:orientation="horizontal"
+        android:background="@color/material_green_50">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:padding="8dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bodega 01"
+                android:layout_alignParentLeft="true"
+                android:textAppearance="@style/FirebaseUI.Text.T04"
+                android:id="@+id/txtNombre"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:textAppearance="@style/FirebaseUI.Text.T06"
+                android:id="@+id/txtTelefono"
+                android:layout_alignParentRight="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Direccion"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:textAppearance="@style/FirebaseUI.Text.T06"
+                android:id="@+id/txtDireccion"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
