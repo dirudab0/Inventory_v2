@@ -11,8 +11,9 @@ import androidx.cardview.widget.CardView;
 import com.ttg.inventory.ConfiguracionInicial;
 import com.ttg.inventory.MainActivityBodega;
 import com.ttg.inventory.MainActivityGasto;
+import com.ttg.inventory.MainActivityProducto;
+import com.ttg.inventory.MainActivityVenta;
 import com.ttg.inventory.R;
-import com.ttg.inventory.Ventas;
 import com.ttg.inventory.ui.informes.InformesActivity;
 import com.ttg.inventory.ui.user.UserActivity;
 
@@ -28,7 +29,7 @@ public class DashboardActivity extends AppCompatActivity {
     private CardView cardVenta;
     private CardView cardGastos;
     private CardView cardConfiguracionInicial;
-    private CardView cardToma;
+    //private CardView cardToma;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +47,17 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
-       /* cardProducto = findViewById(R.id.inventario);
+
+        cardProducto = findViewById(R.id.inventario);
 
         cardProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentPro;
-                intentPro = new Intent(DashboardActivity.this, City.class);
+                intentPro = new Intent(DashboardActivity.this, MainActivityProducto.class);
                 DashboardActivity.this.startActivity(intentPro);
             }
-        });*/
+        });
 
         cardVenta = findViewById(R.id.ventas);
 
@@ -63,7 +65,7 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentPro;
-                intentPro = new Intent(DashboardActivity.this, Ventas.class);
+                intentPro = new Intent(DashboardActivity.this, MainActivityVenta.class);
                 DashboardActivity.this.startActivity(intentPro);
             }
         });

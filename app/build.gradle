@@ -41,7 +41,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:18.0.0'
     implementation 'com.google.firebase:firebase-firestore:20.1.0'
     implementation 'com.google.firebase:firebase-core:17.0.0'
-
+    implementation 'com.google.firebase:firebase-ml-vision:19.0.3'
     implementation 'com.google.firebase:firebase-auth:18.0.0'
     implementation 'com.google.firebase:firebase-storage:18.0.0'
     testImplementation 'junit:junit:4.13-beta-3'
@@ -59,4 +59,11 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:5.0.0'
     implementation 'com.firebaseui:firebase-ui-storage:5.0.0'
     //implementation 'com.github.clans:fab:1.6.4'
+
+    implementation 'com.journeyapps:zxing-android-embedded:2.0.1@aar'
+    implementation 'com.journeyapps:zxing-android-legacy:2.0.1@aar'
+    implementation 'com.journeyapps:zxing-android-integration:2.0.1@aar'
+    implementation 'com.google.zxing:core:3.4.0'
 }
+
+apply plugin: 'com.google.gms.google-services'

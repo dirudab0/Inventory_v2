@@ -17,6 +17,13 @@
     <string name="title_activity_producto">ProductoActivity</string>
     <string name="title_activity_informes">InformesActivity</string>
 
+    <string name="titlulo_pickers">Obtener fecha y hora</string>
+
+    <string name="formato_fecha">dd/mm/yyyy</string>
+    <string name="formato_hora">hh:mm</string>
+
+
+
 
     <!--+++++++++++++++++++++++++-->
 

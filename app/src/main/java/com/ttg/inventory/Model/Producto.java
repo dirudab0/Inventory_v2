@@ -6,17 +6,37 @@ import java.util.Map;
 public class Producto {
 
     private String uid;
+
     private String nombre;
     private String codigo;
     private String creserva;
     private String vcompra;
     private String cantidad;
     private String vventa;
-    private String unidad;
-    private String categoria;
     private String observacion;
 
     public Producto() {
+    }
+
+    public Producto(String uid, String nombre, String codigo, String creserva, String vcompra, String cantidad, String vventa, String observacion) {
+        this.uid = uid;
+        this.nombre = nombre;
+        this.codigo = codigo;
+        this.creserva = creserva;
+        this.vcompra = vcompra;
+        this.cantidad = cantidad;
+        this.vventa = vventa;
+        this.observacion = observacion;
+    }
+
+    public Producto(String nombre, String codigo, String creserva, String vcompra, String cantidad, String vventa, String observacion) {
+        this.nombre = nombre;
+        this.codigo = codigo;
+        this.creserva = creserva;
+        this.vcompra = vcompra;
+        this.cantidad = cantidad;
+        this.vventa = vventa;
+        this.observacion = observacion;
     }
 
     public String getUid() {
@@ -75,22 +95,6 @@ public class Producto {
         this.vventa = vventa;
     }
 
-    public String getUnidad() {
-        return unidad;
-    }
-
-    public void setUnidad(String unidad) {
-        this.unidad = unidad;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
     public String getObservacion() {
         return observacion;
     }
@@ -99,19 +103,16 @@ public class Producto {
         this.observacion = observacion;
     }
 
-
     public Map<String, Object> toMap() {
 
         HashMap<String, Object> result = new HashMap<>();
-        result.put("uid",this.uid);
+
         result.put("nombre",this.nombre);
         result.put("codigo",this.codigo);
         result.put("creserva",this.creserva);
         result.put("vcompra",this.vcompra);
         result.put("cantidad",this.cantidad);
         result.put("vventa",this.vventa);
-        result.put("unidad",this.unidad);
-        result.put("categoria",this.categoria);
         result.put("observacion",this.observacion);
 
         return result;

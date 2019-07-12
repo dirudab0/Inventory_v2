@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:orientation="horizontal"
@@ -20,7 +20,7 @@
             android:src="@drawable/producto"/>
 
         <RelativeLayout
-            android:layout_width="250dp"
+            android:layout_width="230dp"
             android:layout_height="90dp"
             android:padding="8dp">
 
@@ -30,7 +30,7 @@
                 android:text="Leche"
                 android:layout_alignParentLeft="true"
                 android:textAppearance="@style/FirebaseUI.Text.T04"
-                android:id="@+id/txtNombre"/>
+                android:id="@+id/editNombre"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -38,16 +38,25 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:textAppearance="@style/FirebaseUI.Text.T06"
-                android:id="@+id/txtCodigo"
+                android:id="@+id/editCodigo"
                 android:layout_alignParentRight="true" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$Precio"
+                android:text="$ Precio"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:textAppearance="@style/FirebaseUI.Text.T06"
-                android:id="@+id/txtPVenta"/>
+                android:id="@+id/editVventa"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cantidad"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="50dp"
+                android:id="@+id/editCantidad"
+                android:layout_alignParentRight="true"
+                android:textAppearance="@style/FirebaseUI.Text.T06"/>
         </RelativeLayout>
         <LinearLayout
             android:layout_width="wrap_content"

@@ -1,8 +1,29 @@
 package com.ttg.inventory.Adapter;
 
-public class VentaRecyclerViewAdapter  {
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-   /* private List<Venta> ventaList;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.ttg.inventory.Model.Venta;
+import com.ttg.inventory.R;
+import com.ttg.inventory.VentaActivity;
+
+import java.util.List;
+
+public class VentaRecyclerViewAdapter  extends RecyclerView.Adapter<VentaRecyclerViewAdapter.ViewHolder> {
+
+    private List<Venta> ventaList;
     private Context context;
     private FirebaseFirestore firestoreDB;
 
@@ -24,8 +45,17 @@ public class VentaRecyclerViewAdapter  {
         final int itemPosition = position;
         final Venta venta = ventaList.get(itemPosition);
 
-        holder.title.setText(venta.getTitle());
-        holder.content.setText(venta.getContent());
+        holder.editcodigo.setText(venta.getCodigo());
+        holder.editnombre.setText(venta.getNombre());
+        holder.editcliente.setText(venta.getCliente());
+        holder.editfpago.setText(venta.getFpago());
+        //holder.editcantidad.setText(venta.getCantidad());
+        holder.editvalor.setText(venta.getValor());
+       // holder.editdescripcion.setText(venta.getDescripcion());
+
+
+
+
 
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +67,7 @@ public class VentaRecyclerViewAdapter  {
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteVenta(venta.getId(), itemPosition);
+                deleteVenta(venta.getUid(), itemPosition);
             }
         });
     }
@@ -48,14 +78,31 @@ public class VentaRecyclerViewAdapter  {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView title, content;
+
+        TextView editcodigo;
+        TextView editnombre;
+        TextView editcliente;
+        TextView editfpago;
+        TextView editcantidad;
+        TextView editvalor;
+        TextView editdescripcion;
+
+
         ImageView edit;
         ImageView delete;
 
+
+
         ViewHolder(View view) {
             super(view);
-            title = view.findViewById(R.id.tvTitle);
-            content = view.findViewById(R.id.tvContent);
+
+            editcodigo=view.findViewById(R.id.editCodigo);
+            editnombre=view.findViewById(R.id.editNombre);
+            editcliente=view.findViewById(R.id.editCliente);
+            editfpago=view.findViewById(R.id.editFPago);
+            editcantidad=view.findViewById(R.id.editCantidad);
+            editvalor=view.findViewById(R.id.editValor);
+            editdescripcion=view.findViewById(R.id.editDescripcion);
 
             edit = view.findViewById(R.id.ivEdit);
             delete = view.findViewById(R.id.ivDelete);
@@ -63,16 +110,24 @@ public class VentaRecyclerViewAdapter  {
     }
 
     private void updateVenta(Venta venta) {
-        Intent intent = new Intent(context, NoteActivity.class);
+        Intent intent = new Intent(context, VentaActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("UpdateNoteId", venta.getId());
-        intent.putExtra("UpdateNoteTitle", venta.getTitle());
-        intent.putExtra("UpdateNoteContent", venta.getContent());
+
+        intent.putExtra("UpdateVentaId", venta.getUid());
+        intent.putExtra("UpdateVentaCodigo", venta.getCodigo());
+        intent.putExtra("UpdateVentaNombre", venta.getNombre());
+        intent.putExtra("UpdateVentaCliente", venta.getCliente());
+        intent.putExtra("UpdateVentaFpago", venta.getFpago());
+        intent.putExtra("UpdateVentaValor", venta.getValor());
+        intent.putExtra("UpdateVentaDescripcion", venta.getDescripcion());
+
+
+
         context.startActivity(intent);
     }
 
     private void deleteVenta(String id, final int position) {
-        firestoreDB.collection("notes")
+        firestoreDB.collection("venta")
                 .document(id)
                 .delete()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -85,6 +140,4 @@ public class VentaRecyclerViewAdapter  {
                     }
                 });
     }
-    */
 }
-

@@ -52,6 +52,13 @@
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteY="62dp" />
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Fecha" />
+
             <RelativeLayout
                 android:layout_marginTop="32dp"
                 android:layout_marginRight="20dp"
@@ -60,7 +67,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editNombre"
+                    android:id="@+id/editCodigo"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textSize="12sp"
@@ -91,7 +98,7 @@
                     <EditText
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"
-                        android:id="@+id/editCorreo"
+                        android:id="@+id/editCliente"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
@@ -102,7 +109,7 @@
                     <EditText
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"
-                        android:id="@+id/editTelefono"
+                        android:id="@+id/editFPago"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Forma de Pago"
@@ -137,7 +144,7 @@
                         />
 
                     <EditText
-                        android:id="@+id/editPCompra"
+                        android:id="@+id/editValor"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
@@ -153,16 +160,14 @@
             <EditText
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
-                android:id="@+id/editAdicional"
+                android:id="@+id/editDescripcion"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="12dp"
                 android:textSize="12sp"
                 android:gravity="start|top"
                 android:hint="Observacion"
-                android:inputType="textMultiLine"
-                app:layout_constraintStart_toStartOf="@+id/editPCompra"
-                app:layout_constraintTop_toBottomOf="@+id/editTelefono" />
+                android:inputType="textMultiLine"/>
 
             <Button
                 android:id="@+id/btAdd"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,18 +21,20 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.ttg.inventory.Adapter.ProductoRecyclerViewAdapter;
-import com.ttg.inventory.Model.Producto;
+import com.ttg.inventory.Adapter.VentaRecyclerViewAdapter;
+import com.ttg.inventory.Model.Venta;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivityProducto extends AppCompatActivity {
+public class MainActivityVenta extends AppCompatActivity {
 
-    private static final String TAG = "MainActivityProducto";
+
+
+    private static final String TAG = "Venta";
 
     private RecyclerView recyclerView;
-    private ProductoRecyclerViewAdapter mAdapter;
+    private VentaRecyclerViewAdapter mAdapter;
 
 
     private FirebaseFirestore firestoreDB;
@@ -40,14 +43,16 @@ public class MainActivityProducto extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_producto);
+        setContentView(R.layout.activity_main_venta);
 
-        recyclerView = findViewById(R.id.rvProductoList);
+        recyclerView = findViewById(R.id.rvVentaList);
         firestoreDB = FirebaseFirestore.getInstance();
 
-        loadProductoList();
+        final TextView fecha_actual = (TextView) findViewById(R.id.tvFecha);
 
-        firestoreListener = firestoreDB.collection("producto")
+        loadGastoList();
+
+        firestoreListener = firestoreDB.collection("venta")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
@@ -56,15 +61,15 @@ public class MainActivityProducto extends AppCompatActivity {
                             return;
                         }
 
-                        List<Producto> productoList = new ArrayList<>();
+                        List<Venta> ventaList = new ArrayList<>();
 
                         for (DocumentSnapshot doc : documentSnapshots) {
-                            Producto producto = doc.toObject(Producto.class);
-                            producto.setUid(doc.getId());
-                            productoList.add(producto);
+                            Venta venta = doc.toObject(Venta.class);
+                            venta.setUid(doc.getId());
+                            ventaList.add(venta);
                         }
 
-                        mAdapter = new ProductoRecyclerViewAdapter(productoList, getApplicationContext(), firestoreDB);
+                        mAdapter = new VentaRecyclerViewAdapter(ventaList, getApplicationContext(), firestoreDB);
                         recyclerView.setAdapter(mAdapter);
                     }
                 });
@@ -77,24 +82,23 @@ public class MainActivityProducto extends AppCompatActivity {
         firestoreListener.remove();
     }
 
-    private void loadProductoList() {
-        firestoreDB.collection("producto")
+    private void loadGastoList() {
+        firestoreDB.collection("venta")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            List<Producto> productoList = new ArrayList<>();
+                            List<Venta> ventaList = new ArrayList<>();
 
                             for (DocumentSnapshot doc : task.getResult()) {
-                                Producto producto = doc.toObject(Producto.class);
-                                producto.setUid(doc.getId());
-                                productoList.add(producto);
-                                Log.d(TAG, producto.getNombre());
+                                Venta venta = doc.toObject(Venta.class);
+                                venta.setUid(doc.getId());
+                                ventaList.add(venta);
 
                             }
 
-                            mAdapter = new ProductoRecyclerViewAdapter(productoList, getApplicationContext(), firestoreDB);
+                            mAdapter = new VentaRecyclerViewAdapter(ventaList, getApplicationContext(), firestoreDB);
                             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                             recyclerView.setLayoutManager(mLayoutManager);
                             recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -117,7 +121,7 @@ public class MainActivityProducto extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item != null) {
             if (item.getItemId() == R.id.add) {
-                Intent intent = new Intent(this, ProductoActivity.class);
+                Intent intent = new Intent(this, VentaActivity.class);
                 startActivity(intent);
             }
         }

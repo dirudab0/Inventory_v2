@@ -7,17 +7,39 @@ public class Venta {
 
     private String uid;
     private String codigo;
-    private String producto;
+    private String nombre;
     private String cliente;
     private String fpago;
     private String cantidad;
     private String valor;
+    private String descripcion;
 
     public Venta() {
     }
 
     public String getUid() {
         return uid;
+    }
+
+    public Venta(String uid, String codigo, String nombre, String cliente, String fpago, String cantidad, String valor, String descripcion) {
+        this.uid = uid;
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.cliente = cliente;
+        this.fpago = fpago;
+        this.cantidad = cantidad;
+        this.valor = valor;
+        this.descripcion = descripcion;
+    }
+
+    public Venta(String codigo, String nombre, String cliente, String fpago, String cantidad, String valor, String descripcion) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.cliente = cliente;
+        this.fpago = fpago;
+        this.cantidad = cantidad;
+        this.valor = valor;
+        this.descripcion = descripcion;
     }
 
     public void setUid(String uid) {
@@ -32,12 +54,12 @@ public class Venta {
         this.codigo = codigo;
     }
 
-    public String getProducto() {
-        return producto;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setProducto(String producto) {
-        this.producto = producto;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getCliente() {
@@ -72,17 +94,25 @@ public class Venta {
         this.valor = valor;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public Map<String, Object> toMap() {
 
         HashMap<String, Object> result = new HashMap<>();
-        result.put("uid",this.uid);
+
         result.put("codigo",this.codigo);
-        result.put("producto",this.producto);
+        result.put("nombre",this.nombre);
         result.put("cliente",this.cliente);
         result.put("fpago",this.fpago);
         result.put("cantidad",this.cantidad);
         result.put("valor",this.valor);
-
+        result.put("descripcion",this.descripcion);
 
         return result;
     }

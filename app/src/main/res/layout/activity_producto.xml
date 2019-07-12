@@ -14,11 +14,16 @@
     android:background="@drawable/bg"
     tools:context=".ui.login.LoginActivity">
 
+
+
     <ScrollView
+
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
+
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -53,6 +58,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteY="62dp" />
+            <EditText
+                android:id="@+id/editFecha"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="12sp"
+                android:inputType="textPersonName"
+                android:hint="Fecha"
+                android:visibility="invisible"/>
 
         <RelativeLayout
                 android:layout_marginTop="32dp"
@@ -62,7 +75,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editNombre"
+                    android:id="@+id/editCodigo"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textSize="12sp"
@@ -76,7 +89,8 @@
                 android:layout_alignParentRight="true"
                 android:clickable="true"
                 android:onClick="launchSimpleActivity"
-                android:src="@drawable/barras" />
+                android:src="@drawable/barras"
+                android:contentDescription="TODO" />
 
         </RelativeLayout>
 
@@ -105,7 +119,7 @@
                     android:layout_height="match_parent">
 
                     <EditText
-                        android:id="@+id/editCorreo"
+                        android:id="@+id/editCreserva"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
@@ -114,7 +128,7 @@
                         android:textSize="12sp" />
 
                     <EditText
-                        android:id="@+id/editTelefono"
+                        android:id="@+id/editVventa"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -151,7 +165,7 @@
                  />
 
             <EditText
-                android:id="@+id/editPCompra"
+                android:id="@+id/editVcompra"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
@@ -164,29 +178,11 @@
 
             </GridLayout>
 
-            <Spinner
-                android:id="@+id/spinnerUnidad"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="20dp"
-                android:textSize="12sp" />
-
-            <Spinner
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:id="@+id/spinnerCategoria"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="12dp"
-                android:textSize="12sp"
-                />
 
             <EditText
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
-                android:id="@+id/editAdicional"
+                android:id="@+id/editObservacion"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="12dp"
@@ -197,15 +193,13 @@
                 app:layout_constraintStart_toStartOf="@+id/editPCompra"
                 app:layout_constraintTop_toBottomOf="@+id/editTelefono" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabAddicionar"
+            <Button
+                android:id="@+id/btAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="15dp"
-                app:maxImageSize="35dp"
-                android:src="@drawable/ic_save"
-                app:backgroundTint="#009B8686" />
+                android:layout_marginTop="20dp"
+                android:text="Add"
+                tools:ignore="MissingConstraints" />
 
         </LinearLayout>
 
