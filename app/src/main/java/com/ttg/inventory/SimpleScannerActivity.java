@@ -1,19 +1,16 @@
 package com.ttg.inventory;
 
-import android.os.Handler;
-
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.zxing.Result;
-
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
+import me.dm7.barcodescanner.zbar.ZBarScannerView;
 
 
-public class SimpleScannerActivity extends BaseScannerActivity implements ZXingScannerView.ResultHandler {
-    private ZXingScannerView mScannerView;
+public class SimpleScannerActivity extends BaseScannerActivity implements ZBarScannerView.ResultHandler {
+    private ZBarScannerView mScannerView;
 
     @Override
     public void onCreate(Bundle state) {
@@ -22,7 +19,9 @@ public class SimpleScannerActivity extends BaseScannerActivity implements ZXingS
         setupToolbar();
 
         ViewGroup contentFrame = (ViewGroup) findViewById(R.id.content_frame);
-        mScannerView = new ZXingScannerView(this);
+
+        mScannerView = new ZBarScannerView(SimpleScannerActivity.this);
+
         contentFrame.addView(mScannerView);
     }
 
@@ -40,14 +39,12 @@ public class SimpleScannerActivity extends BaseScannerActivity implements ZXingS
     }
 
     @Override
-    public void handleResult(Result rawResult) {
-        Toast.makeText(this, "Contents = " + rawResult.getText() +
-                ", Format = " + rawResult.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();
+    public void handleResult(me.dm7.barcodescanner.zbar.Result rawResult) {
+        Intent intent=new Intent(this,ProductoActivity.class);
+        intent.putExtra("Resultado", rawResult.getContents());
+        Toast.makeText(this, "Contents = "  + rawResult.getContents() +
+                ", Format = " + rawResult.getBarcodeFormat().getName(), Toast.LENGTH_SHORT).show();
 
-        // Note:
-        // * Wait 2 seconds to resume the preview.
-        // * On older devices continuously stopping and resuming camera preview can result in freezing the app.
-        // * I don't know why this is the case but I don't have the time to figure out.
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -55,5 +52,6 @@ public class SimpleScannerActivity extends BaseScannerActivity implements ZXingS
                 mScannerView.resumeCameraPreview(SimpleScannerActivity.this);
             }
         }, 2000);
+
     }
 }

@@ -1,7 +1,26 @@
 <component name="ProjectDictionaryState">
   <dictionary name="dirudab">
     <words>
+      <w>barras</w>
+      <w>cantidad</w>
+      <w>codigo</w>
+      <w>creserva</w>
+      <w>editcantidad</w>
+      <w>editcodigo</w>
+      <w>editcreserva</w>
+      <w>editnombre</w>
+      <w>editobservacion</w>
+      <w>editvcompra</w>
+      <w>editvventa</w>
+      <w>escaneo</w>
+      <w>firestore</w>
+      <w>imgscaner</w>
+      <w>modo</w>
+      <w>nombre</w>
+      <w>observacion</w>
       <w>producto</w>
+      <w>vcompra</w>
+      <w>vventa</w>
     </words>
   </dictionary>
 </component>

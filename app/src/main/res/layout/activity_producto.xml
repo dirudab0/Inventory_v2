@@ -82,15 +82,14 @@
                     android:inputType="textPersonName"
                     android:hint="Codigo" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imgscaner"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_alignParentRight="true"
                 android:clickable="true"
-                android:onClick="launchSimpleActivity"
-                android:src="@drawable/barras"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                android:src="@drawable/barras" />
 
         </RelativeLayout>
 

@@ -59,31 +59,51 @@
                 android:layout_gravity="center"
                 android:text="Fecha" />
 
-            <RelativeLayout
-                android:layout_marginTop="32dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
+            <LinearLayout
+
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal">
+
+
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
 
                 <EditText
                     android:id="@+id/editCodigo"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:textSize="12sp"
+                    android:layout_width="293dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_toStartOf="@+id/imgscaner"
+                    android:layout_toLeftOf="@+id/imgscaner"
+                    android:hint="@string/codigo"
                     android:inputType="textPersonName"
-                    android:hint="Codigo" />
+                    android:textSize="12sp" />
 
-                <ImageView
-                    android:id="@+id/imgscaner"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentRight="true"
-                    android:clickable="true"
-                    android:onClick="launchSimpleActivity"
-                    android:src="@drawable/barras" />
-
+                <ImageButton
+                    android:id="@+id/imgscanerV"
+                    android:layout_width="48dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/barras"
+                    android:layout_marginEnd="20dp"
+                    android:layout_alignParentRight="true" />
             </RelativeLayout>
+
+
+
+
 
             <EditText
                 android:layout_marginRight="20dp"

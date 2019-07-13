@@ -1,141 +1,104 @@
 package com.ttg.inventory.ui.producto;
 
 
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.ttg.inventory.R;
 
 public class ProductoActivity extends AppCompatActivity {
 
- /*   EditText Codigo, Nombre, Reserva, Pventa, Cantidad, PCompra,  Observacion;
-    Spinner Unidad, Categoria;
+    TextView Dato;
 
-
-    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference() ;
-
-    public TextView showJsonData ;
-
-    private static final int ZXING_CAMERA_PERMISSION = 1;
-    private Class<?> mClss;
-
-    FloatingActionButton fabAddicionar;
-
+    static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
 
     @Override
-
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_producto);
+        //set the main content layout of the Activity
+        setContentView(R.layout.producto_item);
 
-        Codigo = findViewById(R.id.editNombre);
-        Nombre = findViewById(R.id.editNombre);
-        Reserva = findViewById(R.id.editCorreo);
-        Pventa = findViewById(R.id.editTelefono);
-        Cantidad = findViewById(R.id.editCantidad);
-        PCompra = findViewById(R.id.editPCompra);
-        Observacion = findViewById(R.id.editAdicional);
-
-        Unidad = (Spinner)findViewById(R.id.spinnerUnidad);
-        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.Unidad,android.R.layout.simple_spinner_item);
-        Unidad.setAdapter(adapter);
-
-        Categoria = (Spinner)findViewById(R.id.spinnerCategoria);
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,R.array.Categoria,android.R.layout.simple_spinner_item);
-        Categoria.setAdapter(adapter1);
-
-        inicializarFirebase();
-
-        fabAddicionar=(FloatingActionButton)findViewById(R.id.fabAddicionar);
-
-        fabAddicionar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String codigo = Codigo.getText().toString();
-                String nombre = Nombre.getText().toString();
-                String reserva = Reserva.getText().toString();
-                String pventa = Pventa.getText().toString();
-                String cantidad = Cantidad.getText().toString();
-                String pcompra = PCompra.getText().toString();
-                String observacion = Observacion.getText().toString();
+    }
 
 
-                if (Codigo.equals("")||Nombre.equals("")||Reserva.equals("")||Pventa.equals("")||Cantidad.equals("")||PCompra.equals("")){
-                    Validacion();
+    //product barcode mode
+    public void scanBar(View v) {
+        try {
+            //start the scanning activity from the com.google.zxing.client.android.SCAN intent
+            Intent intent = new Intent(ACTION_SCAN);
+            intent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+            startActivityForResult(intent, 0);
+        } catch (ActivityNotFoundException anfe) {
+            //on catch, show the download dialog
+            showDialog(ProductoActivity.this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
+        }
+    }
+
+    //product qr code mode
+    public void scanQR(View v) {
+        try {
+            //start the scanning activity from the com.google.zxing.client.android.SCAN intent
+            Intent intent = new Intent(ACTION_SCAN);
+            intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+            startActivityForResult(intent, 0);
+        } catch (ActivityNotFoundException anfe) {
+            //on catch, show the download dialog
+            showDialog(ProductoActivity.this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
+        }
+    }
+
+    //alert dialog for downloadDialog
+    private static AlertDialog showDialog(final Activity act, CharSequence title, CharSequence message, CharSequence buttonYes, CharSequence buttonNo) {
+        AlertDialog.Builder downloadDialog = new AlertDialog.Builder(act);
+        downloadDialog.setTitle(title);
+        downloadDialog.setMessage(message);
+        downloadDialog.setPositiveButton(buttonYes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Uri uri = Uri.parse("market://search?q=pname:" + "com.google.zxing.client.android");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                try {
+                    act.startActivity(intent);
+                } catch (ActivityNotFoundException anfe) {
+
                 }
-                else {
-                    Producto producto= new Producto();
-                    producto.setUid(UUID.randomUUID().toString());
-                    producto.setCodigo(codigo);
-                    producto.setNombre(nombre);
-                    producto.setReserva(reserva);
-                    producto.setPventa(pventa);
-                    producto.setCantidad(cantidad);
-                    producto.setPcompra(pcompra);
-                    producto.setObservacion(observacion);
-
-                    databaseReference.child("producto").child(producto.getUid()).setValue(producto);
-                    Toast.makeText(v.getContext(),"Producto Agregado",Toast.LENGTH_LONG).show();
-
-                    ClearCaja();
-                }
-                
             }
-       });
-
+        });
+        downloadDialog.setNegativeButton(buttonNo, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        return downloadDialog.show();
     }
 
-    private void inicializarFirebase() {
-        FirebaseApp.initializeApp(this);
-        FirebaseDatabase
-        firebaseDatabase= FirebaseDatabase.getInstance();
-        databaseReference=firebaseDatabase.getReference();
-    }
+    //on ActivityResult method
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                //get the extras that are returned from the intent
+                String contents = intent.getStringExtra("SCAN_RESULT");
+                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
 
-    private void ClearCaja() {
-        Codigo.setText("");
-        Nombre.setText("");
-        Reserva.setText("");
-        Pventa.setText("");
-        Cantidad.setText("");
-        PCompra.setText("");
-        Observacion.setText("");
-    }
+                Dato=(TextView) findViewById(R.id.textView1);
 
-    private void Validacion() {
-        String codigo = Codigo.getText().toString();
-        String nombre = Nombre.getText().toString();
-        String reserva = Reserva.getText().toString();
-        String pventa = Pventa.getText().toString();
-        String cantidad = Cantidad.getText().toString();
-        String pcompra = PCompra.getText().toString();
+                Dato.setText(contents);
 
 
-        if (codigo.equals("")||nombre.equals("")||reserva.equals("")||pventa.equals("")||cantidad.equals("")||pcompra.equals("")){
-            Codigo.setError("Requerido");
-        }
-
-
-    }
-
-    public void launchSimpleActivity(View v) {
-        launchActivity(SimpleScannerActivity.class);
-    }
-
-    public void setupToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-    }
-
-    public void launchActivity(Class<?> clss) {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-            mClss = clss;
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.CAMERA}, ZXING_CAMERA_PERMISSION);
-        } else {
-            Intent intent = new Intent(this, clss);
-            startActivity(intent);
+                Toast toast = Toast.makeText(this, Dato + "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
+                toast.show();
+            }
         }
     }
-    */
 
 }
 
