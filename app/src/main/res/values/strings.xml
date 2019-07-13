@@ -163,6 +163,8 @@
     <string name="row_recycle_Population">Population</string>
     <string name="row_recycle_Capital">Capital</string>
     <string name="Agregar">Agregar</string>
+    <string name="title_activity_main_user">Maestro de Usuarios</string>
+    <string name="title_activity_main_bodega">Maestro de Bodegas</string>
 
 
 </resources>

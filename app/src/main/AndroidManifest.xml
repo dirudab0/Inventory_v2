@@ -13,53 +13,50 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProductoActivity"/>
-        <activity android:name=".MainActivityProducto" />
+        <activity
+            android:name=".ui.MainActivityUser"
+            android:label="@string/title_activity_main_user"></activity>
+
+        <activity
+            android:name=".ui.MainActivityBodega"
+            android:label="@string/title_activity_main_bodega"></activity>
+
+        <activity android:name=".ui.MainActivityProducto" />
 
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/network_security_config" />
-
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.login.LoginActivity" />
-        <activity android:name=".FirebaseUIActivity" />
+        <activity android:name=".ui.FirebaseUIActivity" />
         <activity
-            android:name=".ui.dashboard.DashboardActivity"
+            android:name=".ui.DashboardActivity"
             android:label="@string/title_activity_producto"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.informes.InformesActivity"
+            android:name=".ui.InformesActivity"
             android:label="@string/title_activity_informes"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.producto.ProductoActivity"
+            android:name=".ui.ProductoActivity"
             android:label="@string/title_activity_producto"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.user.UserActivity"
-            android:label="@string/title_activity_user"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.registrar.RegisterActivity"
-            android:label="@string/title_activity_register"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ListaProductos" />
-        <activity android:name=".BaseScannerActivity" />
-        <activity android:name=".SimpleScannerActivity" />
-        <activity android:name=".Ventas" />
-        <activity android:name=".BodegaActivity" />
-        <activity android:name=".ConfiguracionInicial" />
-        <activity android:name=".GastoActivity" />
-        <activity android:name=".MainActivityGasto" />
-        <activity android:name=".MainActivityBodega" />
+        <activity android:name=".ui.ListaProductos" />
+        <activity android:name=".ui.BaseScannerActivity" />
+        <activity android:name=".ui.SimpleScannerActivity" />
+        <activity android:name=".ui.Ventas" />
+        <activity android:name=".ui.BodegaActivity" />
+        <activity android:name=".ui.UserActivity" />
+        <activity android:name=".ui.ConfiguracionInicial" />
+        <activity android:name=".ui.GastoActivity" />
+        <activity android:name=".ui.MainActivityGasto" />
+
     </application>
 
 </manifest>

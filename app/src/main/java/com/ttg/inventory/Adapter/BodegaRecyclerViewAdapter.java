@@ -2,6 +2,7 @@ package com.ttg.inventory.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.ttg.inventory.BodegaActivity;
+import com.ttg.inventory.ui.BodegaActivity;
 import com.ttg.inventory.Model.Bodega;
 import com.ttg.inventory.R;
 
@@ -44,6 +45,11 @@ public class BodegaRecyclerViewAdapter extends RecyclerView.Adapter<BodegaRecycl
     public void onBindViewHolder(BodegaRecyclerViewAdapter.ViewHolder holder, int position) {
         final int itemPosition = position;
         final Bodega bodega = bodegaList.get(itemPosition);
+
+        if(position % 2 == 1)
+            holder.itemView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        else
+            holder.itemView.setBackgroundColor(Color.parseColor("#FFFAF8FD"));
 
         holder.editnombre.setText(bodega.getNombre());
         holder.editdireccion.setText(bodega.getDireccion());

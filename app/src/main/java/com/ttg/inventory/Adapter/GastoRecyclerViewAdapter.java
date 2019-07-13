@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.ttg.inventory.GastoActivity;
+import com.ttg.inventory.ui.GastoActivity;
 import com.ttg.inventory.Model.Gasto;
 import com.ttg.inventory.R;
 

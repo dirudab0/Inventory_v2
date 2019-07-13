@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg"
-    tools:context=".ui.dashboard.DashboardActivity">
+    tools:context=".ui.DashboardActivity">
     <!--android:weightSum="10"-->
 
     <LinearLayout
@@ -426,5 +426,12 @@
                 app:cardCornerRadius="8dp"/>
 
         </GridLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/cerrarSesion"
+            android:text="Cerrar Sesion"/>
+
     </LinearLayout>
 </ScrollView>
