@@ -11,5 +11,4 @@
         android:title="Add"
         android:tooltipText="@string/Agregar"
         app:showAsAction="always"/>
-
 </menu>

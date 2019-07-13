@@ -47,7 +47,6 @@
             android:name=".ui.ProductoActivity"
             android:label="@string/title_activity_producto"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.ListaProductos" />
         <activity android:name=".ui.BaseScannerActivity" />
         <activity android:name=".ui.SimpleScannerActivity" />
         <activity android:name=".ui.Ventas" />
